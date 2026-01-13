@@ -1,16 +1,16 @@
 function login() {
    const username = document.getElementById('username').value;
    const password = document.getElementById('password').value;
-   const confirmpassword = document.getElementById('confirmpassword').value;
-   const fullname = document.getElementById('fullname').value;
-   
-   if((username == "") || (password == "") || (confirmpassword == "") || (fullname == "")) {
-         alert("Dapat Kargaan Amin");
-   }
-   else if (password !== confirmpassword) {
-         alert("Hn Agparis Ti Pass");
+
+   const error = document.getElementById('error');
+   if((username == "eliza") && (password == "kikz")) {
+         error.innerHTML = "LOGIN SUCCESSFUL";
+         error.style.color ="blue";
+         error.style.visibility = "visible";
       }
    else {
-      alert("Register successfully")
+      error.innerHTML = "Invalid";
+      error.style.color ="RED";
+      error.style.visibility = "visible";
    }
 }

@@ -27,3 +27,17 @@
         color:blueviolet;
         text-align: center;
     }
+    .error {
+        color: #7a1c1c;
+        background: linear-gradient(135deg, #ffd6d6, #ffecec);
+        border: 1px solid #ff9a9a;
+        padding: 10px 14px;
+        border-radius: 8px;
+        font-size: 14px;
+        font-weight: 500;
+        box-shadow: 0 4px 10px rgba(255, 0, 0, 0.15);
+        text-align: center;
+        visibility: hidden;
+    }
+
+        
