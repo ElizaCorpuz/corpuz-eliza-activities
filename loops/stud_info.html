@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Student Info</title>
+<link rel="stylesheet" href="./css/stud_info.css">
+</head>
+
+<body>
+
+<h2>Student Info</h2>
+
+<input
+  type="text"
+  id="search"
+  placeholder="Search name..."
+>
+
+<button onclick="searchStudent()">Search</button>
+
+<br><br>
+
+<button onclick="showPresent()">Present</button>
+<button onclick="showAbsent()">Absent</button>
+<button onclick="showPassed()">Passed</button>
+<button onclick="showFailed()">Failed</button>
+
+
+<br><br>
+
+<table>
+<thead>
+<tr>
+  <th>Name</th>
+  <th>Sub1</th>
+  <th>Sub2</th>
+  <th>Sub3</th>
+  <th>Average</th>
+  <th>Remarks</th>
+</tr>
+</thead>
+
+<tbody id="studentTable"></tbody>
+</table>
+
+<script src="./js/stud_info.js"></script>
+
+</body>
+</html>

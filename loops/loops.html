@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JavaScript Loops</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>JavaScript Loops Demo</h1>
+      <p class="subtitle">Click any button to see how different loops work in JavaScript</p>
+    </header>
+
+    <main>
+      <div class="button-grid">
+        <button class="btn btn-for" onclick="forLoop()">FOR LOOP</button>
+        <button class="btn btn-while" onclick="whileLoop()">WHILE LOOP</button>
+        <button class="btn btn-do" onclick="doWhileLoop()">DO WHILE LOOP</button>
+        <button class="btn btn-for-of" onclick="forOfLoop()">FOR OF LOOP</button>
+        <button class="btn btn-for-in" onclick="forInLoop()">FOR IN LOOP</button>
+        <button class="btn btn-for-each" onclick="forEachLoop()">FOREACH LOOP</button>
+      </div>
+
+      <div class="output-section">
+        <div class="output-header">
+          <h2>Output</h2>
+          <button class="btn-clear" onclick="clearOutput()">Clear Output</button>
+        </div>
+        <pre id="output">Click any loop button above to see the output here...</pre>
+      </div>
+    </main>
+
+    <footer>
+      <p>Simple JavaScript Loops Demonstration</p>
+    </footer>
+  </div>
+
+  <script src="./js/loops.js"></script>
+</body>
+</html>

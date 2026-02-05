@@ -1,0 +1,89 @@
+body {
+  background: linear-gradient(135deg, #ffb6d5, #ff69b4, #ff1493);
+  font-family: "Comic Sans MS", "Poppins", cursive, sans-serif;
+  padding: 20px;
+  color: #fff;
+}
+
+h2 {
+  text-align: center;
+  font-size: 32px;
+  color: #fff;
+  text-shadow: 2px 2px 5px #c71585;
+  margin-bottom: 20px;
+}
+
+input {
+  background-color: #fff0f6;
+  color: #c71585;
+  border: 2px solid #ff69b4;
+  padding: 8px 12px;
+  border-radius: 20px;
+  outline: none;
+  font-size: 14px;
+}
+
+input::placeholder {
+  color: #ff69b4;
+}
+
+button {
+  background: linear-gradient(135deg, #ff69b4, #ff1493);
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  margin: 4px;
+  border-radius: 25px;
+  cursor: pointer;
+  font-weight: bold;
+  box-shadow: 0 4px 8px rgba(199, 21, 133, 0.5);
+  transition: all 0.3s ease;
+}
+
+button:hover {
+  transform: scale(1.05);
+  background: linear-gradient(135deg, #ff1493, #c71585);
+  box-shadow: 0 6px 12px rgba(199, 21, 133, 0.7);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+  background-color: rgba(255, 255, 255, 0.9);
+  border-radius: 15px;
+  overflow: hidden;
+}
+
+th {
+  background: linear-gradient(135deg, #ff69b4, #ff1493);
+  color: white;
+  padding: 12px;
+  font-size: 14px;
+}
+
+td {
+  color: #c71585;
+  padding: 10px;
+  text-align: center;
+  font-weight: 500;
+}
+
+tr:nth-child(even) {
+  background-color: #ffe4f0;
+}
+
+tr:nth-child(odd) {
+  background-color: #fff0f6;
+}
+
+tr:hover {
+  background-color: #ffd1e8;
+  transition: 0.2s;
+}
+
+td[colspan] {
+  color: #ff1493;
+  font-weight: bold;
+  font-size: 16px;
+}
