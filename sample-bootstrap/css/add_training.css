@@ -1,0 +1,117 @@
+/* Base Body */
+body {
+    background: #0f0f0f;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    overflow-x: hidden;
+}
+
+/* FIRE BACKGROUND */
+.fire-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+        radial-gradient(circle at 30% 20%, #ff6a00, transparent 40%),
+        radial-gradient(circle at 70% 80%, #ff0000, transparent 40%),
+        #0f0f0f;
+    z-index: -1;
+}
+
+/* TITLE */
+.fire-title {
+    color: white;
+    text-shadow: 0 0 10px #ff6a00;
+}
+
+/* GLASS CARD */
+.glass-card {
+    background: rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(12px);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* INPUTS */
+.fire-input {
+    background: rgba(255, 255, 255, 0.08);
+    border: none;
+    color: #ff9999; /* Light Red */
+}
+
+.fire-input::placeholder {
+    color: #ffcccc; /* Even lighter red for placeholder */
+}
+
+/* BUTTONS */
+.fire-btn {
+    background: linear-gradient(45deg, #ff6a00, #ff0000);
+    border: none;
+    color: white;
+    font-weight: bold;
+    transition: .3s;
+}
+
+.fire-btn:hover {
+    opacity: 0.9;
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 80, 0, 0.5);
+}
+
+/* FIREY BUTTON OUTLINE */
+.fire-btn-outline {
+    border: 1px solid #ff6a00;
+    color: #ff6a00;
+}
+
+.fire-btn-outline:hover {
+    background: #ff6a00;
+    color: white;
+}
+
+/* TABLE */
+.table {
+    color: white !important;
+    background: rgba(246, 242, 242, 0.06);
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+.table thead {
+    background: linear-gradient(45deg, #ff6a00, #ff0000);
+    color: white;
+}
+
+.table th,
+.table td {
+    border: none;
+    padding: 10px;
+}
+
+.table tbody tr {
+    background: rgba(255, 255, 255, 0.04);
+    transition: 0.3s;
+}
+
+.table tbody tr:hover {
+    background: rgba(255, 106, 0, 0.15);
+}
+
+/* Curved edges for table */
+table thead tr th:first-child {
+    border-top-left-radius: 12px;
+}
+
+table thead tr th:last-child {
+    border-top-right-radius: 12px;
+}
+
+table tbody tr:last-child td:first-child {
+    border-bottom-left-radius: 12px;
+}
+
+table tbody tr:last-child td:last-child {
+    border-bottom-right-radius: 12px;
+}

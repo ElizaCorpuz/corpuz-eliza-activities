@@ -1,0 +1,118 @@
+/* ===== BODY & FIRE BACKGROUND ===== */
+body {
+    background: #0f0f0f;
+    color: white;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+}
+
+/* FIRE ANIMATED BACKGROUND - SAME AS OTHER PAGES */
+.fire-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(45deg, #ff512f, #dd2476, #ff512f, #ff9966);
+    background-size: 400% 400%;
+    animation: fire 15s ease infinite;
+    z-index: -1;
+}
+
+@keyframes fire {
+    0% {background-position:0% 50%;}
+    50% {background-position:100% 50%;}
+    100% {background-position:0% 50%;}
+}
+
+/* ===== GLASS CARD ===== */
+.glass-card {
+    background: rgba(0,0,0,0.55);
+    backdrop-filter: blur(12px);
+    border-radius: 15px;
+    padding: 30px;
+    box-shadow: 0 0 25px rgba(255,80,0,0.7);
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.glass-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 35px rgba(255,140,0,0.8);
+}
+
+/* ===== TITLE ===== */
+.fire-title {
+    font-size: 1.8rem;
+    font-weight: bold;
+    text-align: center;
+    color: #ffb347;
+    text-shadow: 0 0 10px #ff512f, 0 0 20px #ff9966;
+    margin-bottom: 25px;
+}
+
+/* ===== INFO BOX ===== */
+.info-box {
+    margin-bottom: 15px;
+}
+
+.info-label {
+    font-weight: 600;
+    color: #ffa500;
+    text-shadow: 0 0 5px orange;
+}
+
+.info-value {
+    font-size: 1.2rem;
+    color: #fff;
+    text-shadow: 0 0 5px #ff512f;
+}
+
+/* ===== BUTTONS ===== */
+.fire-btn, .fire-btn-outline {
+    font-weight: bold;
+    padding: 10px 20px;
+    border-radius: 8px;
+    text-align: center;
+    width: 100%;
+    max-width: 300px;
+    transition: 0.3s;
+}
+
+.fire-btn {
+    background: linear-gradient(45deg, #ff512f, #ff9966);
+    border: none;
+    color: white;
+    text-shadow: 0 0 5px #ff512f;
+}
+
+.fire-btn:hover {
+    box-shadow: 0 0 15px #ff512f, 0 0 25px #ff9966;
+    transform: translateY(-2px);
+}
+
+.fire-btn-outline {
+    background: transparent;
+    border: 2px solid #ff512f;
+    color: #ffb347;
+}
+
+.fire-btn-outline:hover {
+    background: linear-gradient(45deg, #ff512f, #ff9966);
+    color: white;
+    box-shadow: 0 0 15px #ff512f, 0 0 25px #ff9966;
+}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:768px){
+    .glass-card {
+        padding: 20px;
+    }
+    .fire-title {
+        font-size: 1.5rem;
+    }
+    .fire-btn, .fire-btn-outline {
+        max-width: 100%;
+    }
+}

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Training | Employee Info System</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/add_training.css">
+</head>
+
+<body>
+
+    <div class="fire-bg"></div>
+
+    <div class="container py-5">
+
+        <div class="glass-card p-4 mx-auto" style="max-width:500px;">
+            <h3 class="fire-title text-center mb-4">Edit Training</h3>
+
+            <div class="mb-3">
+                <label class="form-label">Training Title</label>
+                <input type="text" id="trainingTitle" class="form-control fire-input" placeholder="Enter title">
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Date</label>
+                <input type="date" id="trainingDate" class="form-control fire-input">
+            </div>
+
+            <button id="saveBtn" class="btn fire-btn w-100">Save Changes</button>
+        </div>
+    </div>
+
+    <script>
+        // Get trainings from LocalStorage
+        let trainings = JSON.parse(localStorage.getItem("trainings")) || [];
+        let editIndex = localStorage.getItem("editTraining");
+
+        const titleInput = document.getElementById("trainingTitle");
+        const dateInput = document.getElementById("trainingDate");
+        const saveBtn = document.getElementById("saveBtn");
+
+        if (editIndex !== null && trainings[editIndex]) {
+            titleInput.value = trainings[editIndex].title;
+            dateInput.value = trainings[editIndex].date;
+        } else {
+            alert("No training selected.");
+            window.location.href = "training.html";
+        }
+
+        saveBtn.addEventListener("click", () => {
+            const title = titleInput.value.trim();
+            const date = dateInput.value;
+
+            if (!title || !date) {
+                alert("Please fill all fields");
+                return;
+            }
+
+            trainings[editIndex].title = title;
+            trainings[editIndex].date = date;
+
+            localStorage.setItem("trainings", JSON.stringify(trainings));
+            localStorage.removeItem("editTraining");
+
+            alert("Training updated successfully!");
+            window.location.href = "training.html";
+        });
+    </script>
+
+</body>
+
+</html>

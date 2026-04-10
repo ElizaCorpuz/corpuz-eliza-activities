@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Edit Employee | Employee Info System</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="css/employee_form.css">
+</head>
+<body>
+
+<div class="fire-bg"></div>
+
+<div class="container py-5">
+    <div class="glass-card p-4 mx-auto" style="max-width:500px;">
+        <h3 class="fire-title text-center mb-4">Edit Employee</h3>
+
+        <div class="mb-3">
+            <label for="first" class="form-label">First Name</label>
+            <input type="text" id="first" class="form-control fire-input">
+        </div>
+        <div class="mb-3">
+            <label for="last" class="form-label">Last Name</label>
+            <input type="text" id="last" class="form-control fire-input">
+        </div>
+        <div class="mb-3">
+            <label for="birthday" class="form-label">Birthday</label>
+            <input type="date" id="birthday" class="form-control fire-input">
+        </div>
+        <div class="mb-3">
+            <label for="status" class="form-label">Status</label>
+            <select id="status" class="form-select fire-input">
+                <option value="Active">Active</option>
+                <option value="Permanent">Permanent</option>
+                <option value="Temporary">Temporary</option>
+                <option value="Separated">Separated</option>
+            </select>
+        </div>
+
+        <button id="saveBtn" class="btn fire-btn w-100">Save Changes</button>
+    </div>
+</div>
+
+<script>
+let employees = JSON.parse(localStorage.getItem("employees")) || [];
+let activities = JSON.parse(localStorage.getItem("activities")) || [];
+let editIndex = parseInt(localStorage.getItem("editEmployee"));
+
+const firstInput = document.getElementById("first");
+const lastInput = document.getElementById("last");
+const birthdayInput = document.getElementById("birthday");
+const statusInput = document.getElementById("status");
+const saveBtn = document.getElementById("saveBtn");
+
+// Pre-fill form with existing employee data
+if(editIndex !== null && employees[editIndex]){
+    const emp = employees[editIndex];
+    firstInput.value = emp.first;
+    lastInput.value = emp.last;
+    birthdayInput.value = emp.birthday || "";
+    statusInput.value = emp.status;
+}
+
+// Save changes
+saveBtn.addEventListener("click", ()=>{
+    const first = firstInput.value.trim();
+    const last = lastInput.value.trim();
+    const birthday = birthdayInput.value;
+    const status = statusInput.value;
+
+    if(!first || !last || !birthday){
+        alert("Please fill all fields");
+        return;
+    }
+
+    const empName = first + " " + last;
+
+    employees[editIndex].first = first;
+    employees[editIndex].last = last;
+    employees[editIndex].birthday = birthday;
+    employees[editIndex].status = status;
+
+    activities.push({action:"Edited", employee:empName, date:new Date().toLocaleString()});
+
+    localStorage.setItem("employees", JSON.stringify(employees));
+    localStorage.setItem("activities", JSON.stringify(activities));
+    localStorage.removeItem("editEmployee");
+
+    window.location.href="employee_list.html";
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard | Employee Info System</title>
+
+<!-- Bootstrap 5 -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Font Awesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+<link rel="stylesheet" href="css/dashboard.css">
+
+</head>
+<body>
+
+<div class="fire-bg"></div>
+
+<div class="container py-4">
+
+<!-- HEADER -->
+<div class="glass-card p-4 mb-4">
+
+<div class="d-flex justify-content-between align-items-center">
+
+<div>
+<h3 class="fw-bold text-white">
+<i class="fas fa-building me-2"></i>
+Employee Info System
+</h3>
+
+<div class="mt-3">
+
+<a href="dashboard.html" class="fire-nav-btn active me-2">
+<i class="fas fa-chart-pie"></i> Dashboard
+</a>
+
+<a href="employee_list.html" class="fire-nav-btn">
+<i class="fas fa-users"></i> Employees
+</a>
+
+</div>
+</div>
+
+<a href="login.html" class="fire-logout-btn">
+<i class="fas fa-sign-out-alt"></i> Logout
+</a>
+
+</div>
+</div>
+
+
+<!-- STATUS CARDS -->
+
+<div class="row g-4 mb-5">
+
+<div class="col-md-3">
+<div class="stat-card glass-card text-center">
+
+<i class="fas fa-user-check stat-icon"></i>
+
+<div class="stat-title">Active Employees</div>
+
+<div class="stat-number" id="activeCount">0</div>
+
+</div>
+</div>
+
+
+<div class="col-md-3">
+<div class="stat-card glass-card text-center">
+
+<i class="fas fa-user-tie stat-icon"></i>
+
+<div class="stat-title">Permanent</div>
+
+<div class="stat-number" id="permanentCount">0</div>
+
+</div>
+</div>
+
+
+<div class="col-md-3">
+<div class="stat-card glass-card text-center">
+
+<i class="fas fa-user-clock stat-icon"></i>
+
+<div class="stat-title">Temporary</div>
+
+<div class="stat-number" id="temporaryCount">0</div>
+
+</div>
+</div>
+
+
+<div class="col-md-3">
+<div class="stat-card glass-card text-center">
+
+<i class="fas fa-user-minus stat-icon"></i>
+
+<div class="stat-title">Separated</div>
+
+<div class="stat-number" id="separatedCount">0</div>
+
+</div>
+</div>
+
+</div>
+
+
+<!-- RECENT ACTIVITIES -->
+
+<div class="glass-card p-4">
+
+<h5 class="text-white mb-3">
+<i class="fas fa-history me-2"></i>
+Recent Activities
+</h5>
+
+<div class="table-container">
+
+<table class="table table-borderless text-white">
+
+<thead>
+<tr>
+<th>ID</th>
+<th>Activity</th>
+<th>Employee</th>
+<th>Date</th>
+</tr>
+</thead>
+
+<tbody id="activityList"></tbody>
+
+</table>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- JAVASCRIPT -->
+
+<script>
+
+function updateDashboard(){
+
+let employees = JSON.parse(localStorage.getItem("employees")) || [];
+let activities = JSON.parse(localStorage.getItem("activities")) || [];
+
+/* STATUS COUNTS */
+
+document.getElementById("activeCount").innerText =
+employees.filter(e => e.status === "Active").length;
+
+document.getElementById("permanentCount").innerText =
+employees.filter(e => e.status === "Permanent").length;
+
+document.getElementById("temporaryCount").innerText =
+employees.filter(e => e.status === "Temporary").length;
+
+document.getElementById("separatedCount").innerText =
+employees.filter(e => e.status === "Separated").length;
+
+
+/* RECENT ACTIVITIES */
+
+let table = document.getElementById("activityList");
+
+table.innerHTML = "";
+
+activities.slice(-10).reverse().forEach((act,i)=>{
+
+table.innerHTML += `
+<tr>
+<td>${i+1}</td>
+<td>${act.action}</td>
+<td>${act.employee}</td>
+<td>${act.date}</td>
+</tr>
+`;
+
+});
+
+}
+
+updateDashboard();
+
+</script>
+
+</body>
+</html>

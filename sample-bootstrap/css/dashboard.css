@@ -1,0 +1,136 @@
+body{
+background:#0f0f0f;
+font-family:Arial;
+color:white;
+}
+
+/* FIRE BACKGROUND */
+
+.fire-bg{
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:
+radial-gradient(circle at 20% 20%, #ff5e00, transparent 40%),
+radial-gradient(circle at 80% 80%, #ff0000, transparent 40%),
+#0f0f0f;
+z-index:-1;
+}
+
+/* GLASS CARD */
+
+.glass-card{
+background:rgba(255,255,255,0.08);
+backdrop-filter:blur(12px);
+border-radius:15px;
+box-shadow:0 10px 25px rgba(0,0,0,0.4);
+}
+
+/* NAV BUTTONS */
+
+.fire-nav-btn{
+padding:8px 16px;
+border-radius:8px;
+text-decoration:none;
+color:white;
+background:linear-gradient(45deg,#ff6a00,#ff0000);
+margin-right:6px;
+transition:.3s;
+}
+
+.fire-nav-btn:hover{
+transform:translateY(-2px);
+box-shadow:0 5px 15px rgba(255,80,0,0.6);
+}
+
+.fire-nav-btn.active{
+box-shadow:0 0 10px rgba(255,120,0,0.9);
+}
+
+/* LOGOUT */
+
+.fire-logout-btn{
+padding:8px 16px;
+border-radius:8px;
+background:#ff2a2a;
+text-decoration:none;
+color:white;
+}
+
+.fire-logout-btn:hover{
+background:#ff0000;
+}
+
+/* STATUS CARDS */
+
+.stat-card{
+padding:25px;
+}
+
+.stat-icon{
+font-size:30px;
+color:#ff6a00;
+margin-bottom:10px;
+}
+
+.stat-number{
+font-size:28px;
+font-weight:bold;
+}
+
+/* RECENT ACTIVITIES TABLE */
+
+.table{
+--bs-table-bg: rgba(255,90,0,0.12);
+--bs-table-striped-bg: rgba(255,90,0,0.15);
+--bs-table-hover-bg: rgba(255,120,0,0.2);
+--bs-table-border-color: transparent;
+
+color:white !important;
+border-radius:12px;
+overflow:hidden;
+}
+
+/* HEADER */
+
+.table thead{
+background:linear-gradient(45deg,#ff6a00,#ff0000);
+}
+
+.table thead th{
+color:white !important;
+}
+
+/* TABLE TEXT */
+
+.table td,
+.table th{
+color:white !important;
+border:none;
+}
+
+/* ROW HOVER */
+
+.table tbody tr:hover{
+background:rgba(255,120,0,0.2);
+}
+
+/* CURVED EDGES */
+
+table thead tr th:first-child{
+border-top-left-radius:12px;
+}
+
+table thead tr th:last-child{
+border-top-right-radius:12px;
+}
+
+table tbody tr:last-child td:first-child{
+border-bottom-left-radius:12px;
+}
+
+table tbody tr:last-child td:last-child{
+border-bottom-right-radius:12px;
+}

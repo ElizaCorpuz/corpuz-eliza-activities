@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Employee Info | Employee Info System</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- Bootstrap 5 -->
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- Custom CSS -->
+<link rel="stylesheet" href="css/employee_info.css">
+
+</head>
+<body>
+
+<div class="fire-bg"></div>
+
+<div class="container py-5">
+
+    <div class="glass-card p-4">
+
+        <h3 class="fire-title mb-4">Employee Info</h3>
+
+        <div class="row">
+
+            <!-- LEFT SIDE INFO -->
+            <div class="col-md-6">
+
+                <div class="info-box">
+                    <p class="info-label">Employee ID</p>
+                    <p class="info-value" id="empID"></p>
+                </div>
+
+                <div class="info-box">
+                    <p class="info-label">Last Name</p>
+                    <p class="info-value" id="empLast"></p>
+                </div>
+
+                <div class="info-box">
+                    <p class="info-label">First Name</p>
+                    <p class="info-value" id="empFirst"></p>
+                </div>
+
+                <div class="info-box">
+                    <p class="info-label">Birthday</p>
+                    <p class="info-value" id="empBirthday"></p>
+                </div>
+
+                <div class="info-box">
+                    <p class="info-label">Status</p>
+                    <p class="info-value" id="empStatus"></p>
+                </div>
+
+            </div>
+
+            <!-- RIGHT SIDE BUTTONS -->
+            <div class="col-md-6 d-flex flex-column justify-content-center align-items-center gap-3">
+
+                <a href="training.html" class="btn fire-btn px-4 w-75">
+                    Trainings
+                </a>
+
+                <a href="service_record.html" class="btn fire-btn-outline px-4 w-75">
+                    Service Record
+                </a>
+
+                <a href="employee_list.html" class="btn fire-btn-outline px-4 w-75">
+                    Back to Employees
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+const index = localStorage.getItem("selectedEmployee");
+const employees = JSON.parse(localStorage.getItem("employees")) || [];
+
+if(index !== null && employees[index]){
+
+    const emp = employees[index];
+
+    document.getElementById("empID").innerText = emp.id || "-";
+    document.getElementById("empLast").innerText = emp.last || "-";
+    document.getElementById("empFirst").innerText = emp.first || "-";
+    document.getElementById("empBirthday").innerText = emp.birthday || "-";
+    document.getElementById("empStatus").innerText = emp.status || "-";
+
+}else{
+
+    document.querySelector(".glass-card").innerHTML =
+    "<p class='text-danger'>No employee selected or data not found.</p>";
+
+}
+</script>
+
+</body>
+</html>

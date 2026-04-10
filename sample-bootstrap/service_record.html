@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Service Record</title>
+
+    <!-- Bootstrap 5 -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="./css/service_record.css">
+</head>
+<body>
+
+<!-- 🔥 FIRE BACKGROUND -->
+<div class="fire-bg"></div>
+
+<div class="container mt-5">
+    <div class="page-container">
+
+        <!-- Header -->
+        <h4 class="fw-bold mb-3">Employee Info System</h4>
+
+        <!-- Title -->
+        <h3 class="mb-4 fw-semibold">Service Record</h3>
+
+        <!-- Search + Add -->
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <input type="text" id="searchInput" class="form-control search-box w-50" placeholder="Search..." onkeyup="searchRecords()">
+            <a href="add_service_record.html" class="btn btn-primary btn-sm">Add Service Record</a>
+        </div>
+
+        <!-- Table -->
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover align-middle">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Position</th>
+                        <th>Start</th>
+                        <th>End</th>
+                        <th>Activity</th>
+                    </tr>
+                </thead>
+                <tbody id="serviceRecordTable">
+                    <!-- Populated via Javascript -->
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</div>
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+
+<script>
+let serviceRecords = JSON.parse(localStorage.getItem("serviceRecords")) || [
+    { id: 1, position: "Administrative Staff", start: "2022-01-01", end: "2022-12-31", activity: "Office Management" },
+    { id: 2, position: "Assistant", start: "2023-01-01", end: "Present", activity: "Clerical Support" }
+];
+
+if (!localStorage.getItem("serviceRecords")) {
+    localStorage.setItem("serviceRecords", JSON.stringify(serviceRecords));
+}
+
+function displayServiceRecords() {
+    const table = document.getElementById("serviceRecordTable");
+    table.innerHTML = "";
+    serviceRecords.forEach((record) => {
+        table.innerHTML += `
+        <tr>
+            <td>${record.id}</td>
+            <td>${record.position}</td>
+            <td>${record.start}</td>
+            <td>${record.end}</td>
+            <td>${record.activity}</td>
+        </tr>
+        `;
+    });
+}
+
+function searchRecords() {
+    const input = document.getElementById("searchInput").value.toLowerCase();
+    document.querySelectorAll("#serviceRecordTable tr").forEach(row => {
+        row.style.display = row.innerText.toLowerCase().includes(input) ? "" : "none";
+    });
+}
+
+displayServiceRecords();
+</script>
+
+</body>
+</html>

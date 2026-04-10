@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Employee List | Employee Info System</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
+
+<link rel="stylesheet" href="css/employee_list.css">
+
+</head>
+<body>
+
+<div class="fire-bg"></div>
+
+<div class="container py-5">
+
+<!-- HEADER -->
+<div class="d-flex justify-content-between align-items-center flex-wrap mb-4">
+
+<div>
+<h3 class="fw-bold fire-title">Employee Info System</h3>
+
+<div class="mt-2">
+<a href="dashboard.html" class="btn fire-btn me-2">
+<i class="bi bi-speedometer2"></i> Dashboard
+</a>
+
+<a href="employee_list.html" class="btn fire-btn-outline">
+<i class="bi bi-people"></i> Employees
+</a>
+</div>
+</div>
+
+<div>
+<a href="login.html" class="btn btn-outline-danger">
+<i class="bi bi-box-arrow-right"></i> Logout
+</a>
+</div>
+
+</div>
+
+<!-- SEARCH + ADD -->
+<div class="d-flex justify-content-between mb-3 flex-wrap gap-2">
+
+<div class="input-group w-50">
+<span class="input-group-text"><i class="bi bi-search"></i></span>
+<input type="text" id="search" class="form-control fire-input" placeholder="Search employee..." onkeyup="searchEmployee()">
+</div>
+
+<a href="employee_add.html" class="btn fire-btn">
+<i class="bi bi-plus-lg"></i> Add Employee
+</a>
+
+</div>
+
+<!-- TABLE -->
+<div class="table-responsive glass-card">
+
+<table class="table table-hover text-white mb-0">
+
+<thead class="table-header">
+<tr>
+<th>ID</th>
+<th>Last Name</th>
+<th>First Name</th>
+<th>Status</th>
+<th class="text-center">Actions</th>
+</tr>
+</thead>
+
+<tbody id="employeeTable"></tbody>
+
+</table>
+
+</div>
+
+</div>
+
+<script>
+
+let employees = JSON.parse(localStorage.getItem("employees")) || [];
+let activities = JSON.parse(localStorage.getItem("activities")) || [];
+
+/* DISPLAY EMPLOYEES */
+
+function displayEmployees(){
+
+const table = document.getElementById("employeeTable");
+table.innerHTML="";
+
+employees.forEach((emp,index)=>{
+
+table.innerHTML += `
+
+<tr>
+
+<td>${emp.id}</td>
+<td>${emp.last}</td>
+<td>${emp.first}</td>
+<td>${emp.status}</td>
+
+<td class="text-center">
+
+<button class="btn btn-outline-primary btn-sm"
+onclick="viewEmployee(${index})">
+<i class="bi bi-eye"></i>
+</button>
+
+<button class="btn btn-outline-warning btn-sm"
+onclick="editEmployee(${index})">
+<i class="bi bi-pencil"></i>
+</button>
+
+<button class="btn btn-outline-danger btn-sm"
+onclick="deleteEmployee(${index})">
+<i class="bi bi-trash"></i>
+</button>
+
+</td>
+
+</tr>
+
+`;
+
+});
+
+}
+
+/* VIEW */
+
+function viewEmployee(i){
+localStorage.setItem("selectedEmployee",i);
+window.location.href="employee_info.html";
+}
+
+/* EDIT */
+
+function editEmployee(i){
+localStorage.setItem("editEmployee",i);
+window.location.href="employee_edit.html";
+}
+
+/* DELETE */
+
+function deleteEmployee(i){
+
+if(confirm("Delete employee?")){
+
+let empName = employees[i].first + " " + employees[i].last;
+
+employees.splice(i,1);
+
+activities.push({
+action:"Deleted",
+employee:empName,
+date:new Date().toLocaleString()
+});
+
+localStorage.setItem("employees",JSON.stringify(employees));
+localStorage.setItem("activities",JSON.stringify(activities));
+
+displayEmployees();
+
+}
+
+}
+
+/* SEARCH */
+
+function searchEmployee(){
+
+let input=document.getElementById("search").value.toLowerCase();
+
+document.querySelectorAll("#employeeTable tr").forEach(row=>{
+
+row.style.display=row.innerText.toLowerCase().includes(input)?"":"none";
+
+});
+
+}
+
+displayEmployees();
+
+</script>
+
+</body>
+</html>

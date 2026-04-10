@@ -1,0 +1,226 @@
+/* ==========================
+   GLOBAL
+========================== */
+body {
+    background: #0f0f0f;
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    overflow-x: hidden;
+}
+
+/* FIRE BACKGROUND */
+.fire-bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background:
+        radial-gradient(circle at 30% 20%, #ff6a00, transparent 40%),
+        radial-gradient(circle at 70% 80%, #ff0000, transparent 40%),
+        #0f0f0f;
+    z-index: -1;
+}
+
+/* ==========================
+   TITLES
+========================== */
+.fire-title {
+    color: white;
+    text-shadow: 0 0 10px #ff6a00;
+    font-weight: bold;
+}
+
+/* ==========================
+   GLASS CARD
+========================== */
+.glass-card {
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(12px);
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+    padding: 15px;
+}
+
+/* ==========================
+   NAV BUTTONS
+========================== */
+.fire-nav-btn {
+    padding: 8px 16px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: white;
+    background: linear-gradient(45deg, #ff6a00, #ff0000);
+    margin-right: 6px;
+    transition: 0.3s;
+}
+
+.fire-nav-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(255, 80, 0, 0.6);
+}
+
+.fire-nav-btn.active {
+    box-shadow: 0 0 10px rgba(255, 120, 0, 0.9);
+}
+
+/* LOGOUT BUTTON */
+.fire-logout-btn {
+    padding: 8px 16px;
+    border-radius: 8px;
+    background: #ff2a2a;
+    text-decoration: none;
+    color: white;
+}
+
+.fire-logout-btn:hover {
+    background: #ff0000;
+}
+
+/* ==========================
+   STATUS CARDS
+========================== */
+.stat-card {
+    padding: 25px;
+    text-align: center;
+}
+
+.stat-icon {
+    font-size: 30px;
+    color: #ff6a00;
+    margin-bottom: 10px;
+}
+
+.stat-title {
+    font-weight: 600;
+    margin-bottom: 5px;
+}
+
+.stat-number {
+    font-size: 28px;
+    font-weight: bold;
+    color: white;
+}
+
+/* ==========================
+   TABLE FIX FOR FIRE THEME
+========================== */
+
+/* Table container */
+.table-container {
+    background: rgba(255, 255, 255, 0.08); /* transparent blurry box */
+    backdrop-filter: blur(12px);
+    border-radius: 15px;
+    padding: 15px;
+    overflow: hidden;
+}
+
+/* Remove Bootstrap table backgrounds */
+.table,
+.table thead,
+.table tbody,
+.table tr,
+.table th,
+.table td {
+    background: transparent !important;
+    color: white !important;
+    border: none;
+}
+
+/* Table header gradient */
+.table thead th {
+    background: linear-gradient(45deg, #ff6a00, #ff0000) !important;
+    color: white !important;
+    font-weight: 600;
+    padding: 12px 15px;
+}
+
+/* Table body rows */
+.table tbody tr {
+    background: rgba(255, 255, 255, 0.04);
+    transition: 0.3s;
+}
+
+.table tbody tr:hover {
+    background: rgba(255, 106, 0, 0.15);
+}
+
+/* Curved corners */
+.table thead tr th:first-child {
+    border-top-left-radius: 15px;
+}
+.table thead tr th:last-child {
+    border-top-right-radius: 15px;
+}
+.table tbody tr:last-child td:first-child {
+    border-bottom-left-radius: 15px;
+}
+.table tbody tr:last-child td:last-child {
+    border-bottom-right-radius: 15px;
+}
+
+/* Table cells */
+.table td {
+    padding: 10px 15px;
+    color: white !important;
+}
+
+/* CURVED EDGES */
+.table thead tr th:first-child {
+    border-top-left-radius: 15px;
+}
+
+.table thead tr th:last-child {
+    border-top-right-radius: 15px;
+}
+
+.table tbody tr:last-child td:first-child {
+    border-bottom-left-radius: 15px;
+}
+
+.table tbody tr:last-child td:last-child {
+    border-bottom-right-radius: 15px;
+}
+
+/* ==========================
+   INPUTS
+========================== */
+.fire-input {
+    background: rgba(255, 255, 255, 0.08);
+    border: none;
+    color: white;
+}
+
+.fire-input::placeholder {
+    color: #ddd;
+}
+
+.input-group-text {
+    background: rgba(255, 255, 255, 0.08);
+    border: none;
+    color: white;
+}
+
+/* ==========================
+   BUTTONS
+========================== */
+.fire-btn {
+    background: linear-gradient(45deg, #ff6a00, #ff0000);
+    border: none;
+    color: white;
+}
+
+.fire-btn:hover {
+    opacity: 0.9;
+}
+
+.fire-btn-outline {
+    border: 1px solid #ff6a00;
+    color: #ff6a00;
+}
+
+.fire-btn-outline:hover {
+    background: #ff6a00;
+    color: white;
+}

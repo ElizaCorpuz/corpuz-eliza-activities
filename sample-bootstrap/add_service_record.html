@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Add Service Record | Employee Info System</title>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="css/add_training.css">
+</head>
+<body>
+
+<div class="fire-bg"></div>
+
+<div class="container py-5">
+
+    <div class="glass-card p-4 mx-auto" style="max-width:500px;">
+        <h3 class="fire-title text-center mb-4">Add Service Record</h3>
+
+        <div class="mb-3">
+            <label class="form-label">Position</label>
+            <input type="text" id="recordPosition" class="form-control fire-input" placeholder="e.g. Administrative Staff">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Start Date</label>
+            <input type="date" id="recordStart" class="form-control fire-input">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">End Date (or 'Present')</label>
+            <input type="text" id="recordEnd" class="form-control fire-input" placeholder="e.g. 2022-12-31 or Present">
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Activity</label>
+            <input type="text" id="recordActivity" class="form-control fire-input" placeholder="e.g. Office Management">
+        </div>
+
+        <button id="saveBtn" class="btn fire-btn w-100">Add Service Record</button>
+    </div>
+</div>
+
+<script>
+// Get service records from LocalStorage
+let serviceRecords = JSON.parse(localStorage.getItem("serviceRecords")) || [];
+
+const positionInput = document.getElementById("recordPosition");
+const startInput = document.getElementById("recordStart");
+const endInput = document.getElementById("recordEnd");
+const activityInput = document.getElementById("recordActivity");
+const saveBtn = document.getElementById("saveBtn");
+
+saveBtn.addEventListener("click", ()=>{
+    const position = positionInput.value.trim();
+    const start = startInput.value;
+    const end = endInput.value.trim();
+    const activity = activityInput.value.trim();
+
+    if(!position || !start || !end || !activity){
+        alert("Please fill all fields");
+        return;
+    }
+
+    let id = serviceRecords.length ? serviceRecords[serviceRecords.length-1].id + 1 : 1;
+    serviceRecords.push({id, position, start, end, activity});
+
+    localStorage.setItem("serviceRecords", JSON.stringify(serviceRecords));
+
+    alert("Service record added successfully!");
+    window.location.href = "service_record.html";
+});
+</script>
+
+</body>
+</html>
